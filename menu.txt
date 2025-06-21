@@ -1,15 +1,10 @@
-***** welcome sir our resturent *****
-
-    DISHES NAME                     PRICE
-
-1. Paneer Punjabi                   100 ₹
-2. Paneer Butter Masala             100 ₹
-3. Paneer Tikka masala              100 ₹
-4. Paneer Kadahi                    100 ₹
-5. Paneer 2 Pyaza                   100 ₹
-6. Matar Paneer                     100 ₹
-7. Shahi paneer                     100 ₹
-8. Paneer Masala                    100 ₹
-9. Mali Koffta                      100 ₹
-10. Paneer Mushroom masala          100 ₹
-11. chapati                           7 ₹
+1.paneer punjabi            120 ₹
+2.paneer butter masala      210 ₹
+3.paneer kadahi             110 ₹
+4.malai koffta              130 ₹
+5.paneer masala             109 ₹
+6.gobi masala               100 ₹
+7.sahi masala               140 ₹
+8.mix veg                   150 ₹
+9.kadahi veg                220 ₹
+10.banana shek              100 ₹
