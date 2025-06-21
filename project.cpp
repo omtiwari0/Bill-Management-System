@@ -1,152 +1,147 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-
+#include <algorithm>
 using namespace std;
 
-class menu
+int seprate(string s)
 {
-    public:
+    string final = "";
 
-    string input[20]; // 3rd index se items lena start kar dega  and last deta 13 tak milega 
+    int lnth = s.length();
 
-    
+    char f1, f2, f3;
 
-};
+      f1  = s[lnth-7];
+      f2  = s[lnth-6];
+      f3  = s[lnth-5];
 
+      string  first(1, f1);
+      string middle(1, f2);
+      string   last(1, f3);
 
-int main()
-{   
-    int place=0;
-    /* class se object create karna */
-    menu dish;
+      final = first + middle + last;
+      int num = stoi(final);
 
-    /* menu print karwana */
-
-    string sabzi;
-
-
-    ifstream menu; // creating an object 
-    ofstream bill;
-
-    menu.open("menu.txt");
-    bill.open("bill.txt");
-
-    menu>>sabzi;
-
-    getline(menu, sabzi);
-    
-    while(menu.eof()==0)
-    {
-        getline(menu, sabzi);
-        cout<<sabzi<<endl;
-        dish.input[place] = sabzi;
-        place++;
-        
-    }
-
-    
-
-
-
-    // cout<<dish.input[5];
-
-    /* user se input lena hai */
-
-    int k=1;
-    int arr[12];
-    
-    cout<<" \n PLEASE ENTER YOUR CHOICES: \n...... ENTER 0 FOR CONFORMATION.....\n";
-
-    for(int i=0; i<12; i++)
-    {
-        if(k != 0)
-        {
-           cin>>k;
-           arr[i]=k;
-        }
-        else {
-            break;
-        }
-
-    }
-
-    cout<<" THANKYOU sir, we preparing your order "<<endl;
-
-       
-    /* calculations */
-
-
-    int sum = 0;
-
-    for(int i=0; i<12; i++)
-
-    {
-
-      switch(arr[i])  
-
-        {
-        
-              case 1 : sum = sum+100; break;
-              case 2 : sum = sum+100; break;
-              case 3 : sum = sum+100; break;
-              case 4 : sum = sum+100; break;
-              case 5 : sum = sum+100; break;
-              case 6 : sum = sum+100; break;
-              case 7 : sum = sum+100; break;
-              case 8 : sum = sum+100; break;
-              case 9 : sum = sum+100; break;
-              case 10 : sum = sum+100; break;
-              case 11 : sum = sum+  7; break;
-              case 12 : sum = sum+100; break; 
-
-        }
+      return num;
       
 
-    }
+}
 
-    
-    
+int main()
 
-    /* order summery and billing */
+{  
+   /* declaration */
 
-    bill<<" ******** BILL WITH ALL DETAILS *********\n\n\n";
+   int price[50];
+   int choice[50];
+   float sum = 0;
+   int i = 0;
+   int price_id;
+   int dish_id;
 
-    for(int i=0; i<11; i++)
+   string dish;
+   string dish_name[50];   
 
+   ifstream menu;
+   ofstream bill;
 
-    {
-
-      switch(arr[i])  
-
-        {
-        
-              case 1 : bill<<dish.input[3]<<endl;   break;
-              case 2 : bill<<dish.input[4]<<endl;   break;
-              case 3 : bill<<dish.input[5]<<endl;   break;
-              case 4 : bill<<dish.input[6]<<endl;   break;
-              case 5 : bill<<dish.input[7]<<endl;   break;
-              case 6 : bill<<dish.input[8]<<endl;   break;
-              case 7 : bill<<dish.input[9]<<endl;   break;
-              case 8 : bill<<dish.input[10]<<endl;  break;
-              case 9 : bill<<dish.input[11]<<endl;  break;
-              case 10 : bill<<dish.input[12]<<endl; break;
-              case 11 : bill<<dish.input[13]<<endl;          
-            
-
-    }
+   menu.open("menu.txt");
+   bill.open("bill.txt");
 
 
-    }
-           
-    bill<<"\n     Subtotal :                     "<<sum<<" ₹"<<endl;
-    bill<<"     tax(5%)  :                      "<<sum*0.05<<" ₹"<<endl;
-    bill<<" total Amount :                     "<<(sum + sum*0.05)<<" ₹"<<endl;
+   while(menu.eof()==0)
+   {
+      getline(menu, dish);
+      cout<<dish<<endl; // so that we can show menu
 
-     return 0;
+      dish_name[i] = dish; // so that dish ki di
+
+      price[i] = seprate(dish);
+      i++;
+
+   }
+
+   /* user choose choices */
+
+   cout<<"\nEnter your choices : "<<endl;
+
+
+   for(int i=0; i<50; i++)
+   {
+      cin>>choice[i];
+
+      if(choice[i] == 0)
+      {
+         cout<<"\nThankyou sir, we prepare your order.\n"<<endl;
+         break;
+      }
+
+   }
+
+
+   /* for billing calculation */
+
+
+   for(int i=0; i<50; i++)
+   {
+      price_id = choice[i];
+
+      if(price_id ==0)
+      {
+         break;
+      }
+
+      sum = sum + price[price_id-1];
+
+   }
+
+ 
+
+   /* bill printing */
+   cout<<"************Bill*****************"<<endl;
+   cout<<endl;   
+   cout<<"   DISHES                   PRICE"<<endl;
+   cout<<endl;
+   
+   bill<<"************Bill*****************"<<endl;
+   bill<<endl;   
+   bill<<"   DISHES                   PRICE"<<endl;
+   bill<<endl;
+
+
+   for(int i = 0; i<50; i++)
+   {
+      dish_id = choice[i];
+
+      if(dish_id==0)
+      {
+         break;
+      }
+
+      bill<<dish_name[dish_id-1]<<endl;
+      cout<<dish_name[dish_id-1]<<endl;
+
+   }
+   
+   cout<<endl;
+   cout<<"************************************"<<endl;
+   cout<<"  Total     :               "<<sum<<" ₹"<<endl;
+   cout<<"  Tax(5%)   :              "<<(sum*0.05)<<" ₹"<<endl;
+   cout<<"  Subtotal  :             "<<(sum + (sum)*0.05 )<<" ₹"<<endl;
+   cout<<"************************************"<<endl;
+
+   bill<<endl;
+   bill<<"************************************"<<endl;
+   bill<<"  Total     :               "<<sum<<" ₹"<<endl;
+   bill<<"  Tax(5%)   :              "<<(sum*0.05)<<" ₹"<<endl;
+   bill<<"  Subtotal  :             "<<(sum + (sum)*0.05 )<<" ₹"<<endl;
+   bill<<"************************************"<<endl;
 
 
 
+
+   
 
 
 
