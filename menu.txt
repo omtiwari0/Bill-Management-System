@@ -1,10 +1,10 @@
-1.paneer punjabi            120 ₹
-2.paneer butter masala      210 ₹
-3.paneer kadahi             110 ₹
-4.malai koffta              130 ₹
-5.paneer masala             109 ₹
-6.gobi masala               100 ₹
-7.sahi masala               140 ₹
-8.mix veg                   150 ₹
-9.kadahi veg                220 ₹
-10.banana shek              100 ₹
+1.tea                         30 rps 
+2.banana                         56 rps 
+3.papaya                         40 rps 
+4.grapess                         10 rps 
+5.kachori                         5 rps 
+6.chapati                         8 rps 
+7.paratha                         20 rps 
+8.lacha                         50 rps 
+9.milk     20 ₹
+0.     20 ₹
